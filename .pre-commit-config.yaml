@@ -1,0 +1,49 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-symlinks
+      - id: double-quote-string-fixer
+      - id: detect-private-key
+      - id: check-yaml
+
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.4.0
+    hooks:
+      - id: detect-secrets
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.0.3
+    hooks:
+      - id: prettier
+        files: \.(js|ts|jsx|tsx|css|less|html|json|markdown|md|yaml|yml)$
+
+  - repo: https://github.com/psf/black
+    rev: 23.9.1
+    hooks:
+      - id: black
+
+  #  - repo: https://github.com/hadolint/hadolint
+  #    rev: v2.12.0
+  #    hooks:
+  #      - id: hadolint-docker
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.23.0
+    hooks:
+      - id: yamllint
+        exclude: >
+          (?x)^(
+            .github/workflows/*.yaml
+          )$
+        files: \.(yaml|yml)$
+        args: ["--format", "parsable", "--strict"]
+
+  - repo: https://github.com/pylint-dev/pylint
+    rev: v3.0.1
+    hooks:
+      - id: pylint
+        args:
+          - --output-format=colorized
