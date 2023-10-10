@@ -38,6 +38,7 @@ spec:
     - name: report_output_path
       type: string
       description: path of file to save analysis report
+      default: "."
     - name: args
       type: array
       description: "args"
