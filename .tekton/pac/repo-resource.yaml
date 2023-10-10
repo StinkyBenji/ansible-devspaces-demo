@@ -1,0 +1,7 @@
+apiVersion: pipelinesascode.tekton.dev/v1alpha1
+kind: Repository
+metadata:
+  name: ansible-devspaces-demo-repo
+  namespace: ansible-devspaces-demo
+spec:
+  url: "https://github.com/StinkyBenji/ansible-devspaces-demo.git"

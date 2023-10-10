@@ -4,16 +4,16 @@ metadata:
 components:
   - name: tooling-container
     container:
-      image: quay.io/devspaces/ansible-creator-ee@sha256:b56346616d815986f96fec95da0fbf3467a6740eaa02edc4e9ed66522ab2ac9a
+      image: quay.io/stbenji/creator-ee-test@sha256:df18bd905b884b5890edddfbaad3f2c9163531dc3d48cd2727754a37e9c7f941
       memoryRequest: 256M
       memoryLimit: 6Gi
       cpuRequest: 250m
       cpuLimit: 2000m
-      args: ['tail', '-f', '/dev/null']
+      args: ["tail", "-f", "/dev/null"]
 commands:
   - id: oc-install
     exec:
-      commandLine: '/usr/local/bin/ansible-playbook ${PROJECT_SOURCE}/playbooks/install_oc.yml'
+      commandLine: "/usr/local/bin/ansible-playbook ${PROJECT_SOURCE}/playbooks/install_oc.yml"
       workingDir: ${PROJECT_SOURCE}
       group:
         kind: build
@@ -22,7 +22,7 @@ commands:
   - id: molecule-test
     exec:
       label: "Molecule: Run Scenario for Backup Role"
-      commandLine: 'source $HOME/.bashrc && molecule test'
+      commandLine: "source $HOME/.bashrc && molecule test"
       workingDir: ${PROJECTS_ROOT}/ansible-devspaces-demo/collections/example/collection/roles/backup_file
       group:
         kind: run
@@ -31,7 +31,7 @@ commands:
   - id: molecule-verify
     exec:
       label: "Molecule: Validate Backup File Role"
-      commandLine: 'source $HOME/.bashrc && molecule verify'
+      commandLine: "source $HOME/.bashrc && molecule verify"
       workingDir: ${PROJECTS_ROOT}/ansible-devspaces-demo/collections/example/collection/roles/backup_file
       group:
         kind: run
