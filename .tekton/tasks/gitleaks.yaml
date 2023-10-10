@@ -23,7 +23,7 @@ spec:
     - name: repo_path
       type: string
       description: path to the repo to be scanned.
-      default: .
+      default: "."
     - name: config_file_url
       type: string
       description: url from where the config file would be fetched.

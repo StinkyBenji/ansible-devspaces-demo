@@ -5,3 +5,10 @@ metadata:
   namespace: openshift-pipelines
 spec:
   url: "https://github.com/StinkyBenji/ansible-devspaces-demo"
+  git_provider:
+    secret:
+      name: "github-webhook-config"
+      key: "provider.token"
+    webhook_secret:
+      name: "github-webhook-config"
+      key: "webhook.secret"
