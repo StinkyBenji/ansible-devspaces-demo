@@ -48,6 +48,8 @@ spec:
             value: https://raw.githubusercontent.com/tektoncd/catalog/main/task/gitleaks/0.1/samples/gitleaks.toml
           - name: config_file_path
             value: gitleaks.toml
+          - name: report_output_path
+            value: gitleaks-report.json
 
       - name: yaml-lint
         runAfter:
