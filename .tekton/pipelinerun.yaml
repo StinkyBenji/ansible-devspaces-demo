@@ -59,7 +59,7 @@ spec:
             workspace: source
         params:
           - name: args
-            value: "-c .yamllint ."
+            value: ["-c .yamllint ."]
 
       - name: ansible-lint
         runAfter:
