@@ -1,3 +1,5 @@
+fail_fast: true
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.3.0
@@ -24,11 +26,6 @@ repos:
     rev: 23.9.1
     hooks:
       - id: black
-
-  #  - repo: https://github.com/hadolint/hadolint
-  #    rev: v2.12.0
-  #    hooks:
-  #      - id: hadolint-docker
 
   - repo: https://github.com/adrienverge/yamllint
     rev: v1.23.0

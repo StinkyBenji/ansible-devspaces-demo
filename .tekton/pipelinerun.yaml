@@ -5,7 +5,7 @@ metadata:
   name: ansible-devspaces-demo
   annotations:
     pipelinesascode.tekton.dev/on-event: "[push, pull_request]"
-    pipelinesascode.tekton.dev/on-target-branch: "[rzh-pipelines]"
+    pipelinesascode.tekton.dev/on-target-branch: "[main]"
     pipelinesascode.tekton.dev/max-keep-runs: "5"
     pipelinesascode.tekton.dev/task: "[git-clone]"
     pipelinesascode.tekton.dev/task-1: "[.tekton/tasks/ansible-lint.yaml]"

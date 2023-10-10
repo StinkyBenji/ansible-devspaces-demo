@@ -6,7 +6,7 @@ ENV HOME=/home/runner
 # install kubernetes module required by molecule
 RUN pip3 install kubernetes==26.1.0
 
-## kubectl
+# kubectl
 RUN \
     microdnf install -y which && \
     microdnf clean all && \
@@ -15,7 +15,7 @@ RUN \
     mv ./kubectl /usr/local/bin && \
     kubectl version --client
 
-## helm
+# helm
 RUN \
     TEMP_DIR="$(mktemp -d)" && \
     cd "${TEMP_DIR}" && \
@@ -41,6 +41,9 @@ export NVM_DIR="$HOME/.nvm" && \
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
 nvm install 18.18.0
 ENV VSCODE_NODEJS_RUNTIME_DIR="$HOME/.nvm/versions/node/v18.18.0/bin/"
+
+# install pre-commit
+RUN pip3 install pre-commit
 
 # Set permissions on /etc/passwd and /home to allow arbitrary users to write
 RUN chgrp -R 0 /home && chmod -R g=u /etc/passwd /etc/group /home
