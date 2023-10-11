@@ -16,7 +16,7 @@ spec:
       description: A workspace that contains the fetched git repository.
   params:
     - name: args
-      type: string
+      type: array
       description: extra args needs to append
       default: ["--help"]
     - name: context-directory
