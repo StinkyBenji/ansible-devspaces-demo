@@ -45,7 +45,8 @@ spec:
       script: |
         #!/usr/bin/env sh
         set -e
+
         if [ "$(params.verbose)" = "true" ] ; then
           set -x
         fi
-        yamllint "$(params.args)"
+        yamllint -c .yamllint $(find . -type f -regex '.*y[a]ml' -print)

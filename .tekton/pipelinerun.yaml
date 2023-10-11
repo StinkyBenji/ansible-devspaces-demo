@@ -60,9 +60,6 @@ spec:
         workspaces:
           - name: shared-workspace
             workspace: source
-        params:
-          - name: args
-            value: ["-c .yamllint $(find . -type f -regex '.*y[a]ml' -print)"]
 
       - name: ansible-lint
         runAfter:
