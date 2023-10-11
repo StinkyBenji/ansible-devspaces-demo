@@ -18,7 +18,7 @@ spec:
     - name: args
       type: string
       description: extra args needs to append
-      default: "--help"
+      default: ["--help"]
     - name: context-directory
       type: string
       description: "Context directory within the source repository in which we want to execute yaml lint."
@@ -49,4 +49,5 @@ spec:
         if [ "$(params.verbose)" = "true" ] ; then
           set -x
         fi
-        yamllint -c .yamllint $(find . -type f -regex '.*y[a]ml' -print)
+
+        yamllint "$(params.args)"
