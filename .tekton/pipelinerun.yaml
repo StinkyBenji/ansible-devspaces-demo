@@ -7,9 +7,10 @@ metadata:
     pipelinesascode.tekton.dev/on-event: "[push, pull_request]"
     pipelinesascode.tekton.dev/on-target-branch: "[main]"
     pipelinesascode.tekton.dev/max-keep-runs: "5"
-    pipelinesascode.tekton.dev/task: "[git-clone, yaml-lint, pylint]"
+    pipelinesascode.tekton.dev/task: "[git-clone, pylint]"
     pipelinesascode.tekton.dev/task-1: "[.tekton/tasks/gitleaks.yaml]"
-    pipelinesascode.tekton.dev/task-2: "[.tekton/tasks/ansible-lint.yaml]"
+    pipelinesascode.tekton.dev/task-2: "[.tekton/tasks/yaml-lint.yaml]"
+    pipelinesascode.tekton.dev/task-3: "[.tekton/tasks/ansible-lint.yaml]"
 spec:
   params:
     - name: repo_url
@@ -61,7 +62,7 @@ spec:
             workspace: source
         params:
           - name: args
-            value: ["-c .yamllint $(find . -type f -regex '.*y[a]ml' -print) -"]
+            value: ["-c .yamllint $(find . -type f -regex '.*y[a]ml' -print)"]
 
       - name: ansible-lint
         runAfter:
