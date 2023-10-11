@@ -16,9 +16,8 @@ spec:
       description: A workspace that contains the fetched git repository.
   params:
     - name: args
-      type: string
+      type: array
       description: extra args needs to append
-      default: "--help"
     - name: context-directory
       type: string
       description: "Context directory within the source repository in which we want to execute yaml lint."
