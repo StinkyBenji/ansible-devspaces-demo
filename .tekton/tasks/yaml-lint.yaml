@@ -18,7 +18,6 @@ spec:
     - name: args
       type: array
       description: extra args needs to append
-      default: ["--help"]
     - name: context-directory
       type: string
       description: "Context directory within the source repository in which we want to execute yaml lint."
@@ -42,7 +41,12 @@ spec:
         runAsNonRoot: true
         runAsUser: 65532
       workingDir: $(workspaces.shared-workspace.path)/$(params.context-directory)
-      command:
-        - yamllint
-      args:
-        - $(params.args)
+      script: |
+        #!/usr/bin/env sh
+        set -e
+
+        if [ "$(params.verbose)" = "true" ] ; then
+          set -x
+        fi
+
+        yamllint -c .yamllint $(find . -type f -regex '.*y[a]ml' -print)
