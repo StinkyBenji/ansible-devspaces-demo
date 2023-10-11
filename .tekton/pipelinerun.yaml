@@ -60,10 +60,22 @@ spec:
         workspaces:
           - name: shared-workspace
             workspace: source
+        params:
+          - name: args
+            value: "-c .yamllint ."
+
+      - name: pylint
+        runAfter:
+          - yaml-lint
+        taskRef:
+          name: pylint
+        workspaces:
+          - name: shared-workspace
+            workspace: source
 
       - name: ansible-lint
         runAfter:
-          - yaml-lint
+          - pylint
         taskRef:
           name: ansible-lint
         workspaces:
