@@ -57,6 +57,7 @@ spec:
           - detect-secrets
         taskRef:
           name: yaml-lint
+          kind: Task
         workspaces:
           - name: shared-workspace
             workspace: source
