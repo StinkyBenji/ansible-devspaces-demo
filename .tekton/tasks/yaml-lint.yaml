@@ -43,7 +43,7 @@ spec:
         runAsUser: 65532
       workingDir: $(workspaces.shared-workspace.path)/$(params.context-directory)
       script: |
-        #!/usr/bin/env sh
+        #!/bin/sh
         set -e
 
         if [ "$(params.verbose)" = "true" ] ; then
