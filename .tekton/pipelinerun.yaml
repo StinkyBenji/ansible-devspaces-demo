@@ -60,6 +60,8 @@ spec:
           - name: shared-workspace
             workspace: source
         params:
+          - name: image
+            value: docker.io/cytopia/yamllint:latest
           - name: args
             value: ["-c .yamllint $(find . -type f -regex '.*y[a]ml' -print)"]
 
