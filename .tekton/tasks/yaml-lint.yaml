@@ -50,4 +50,6 @@ spec:
           set -x
         fi
 
+        echo "$(params.args)"
+
         yamllint --help
