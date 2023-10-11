@@ -18,6 +18,7 @@ spec:
     - name: args
       type: array
       description: extra args needs to append
+      default: ["."]
     - name: context-directory
       type: string
       description: "Context directory within the source repository in which we want to execute yaml lint."
