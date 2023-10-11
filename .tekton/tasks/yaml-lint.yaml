@@ -51,4 +51,5 @@ spec:
         fi
 
         yamllint "$(params.args)"
-      args: $(params.args)
+      args:
+        - $(params.args)
