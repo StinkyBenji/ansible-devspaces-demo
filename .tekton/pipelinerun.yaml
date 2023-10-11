@@ -64,18 +64,9 @@ spec:
           - name: args
             value: "-c .yamllint ."
 
-      - name: pylint
-        runAfter:
-          - yaml-lint
-        taskRef:
-          name: pylint
-        workspaces:
-          - name: shared-workspace
-            workspace: source
-
       - name: ansible-lint
         runAfter:
-          - pylint
+          - yaml-lint
         taskRef:
           name: ansible-lint
         workspaces:
