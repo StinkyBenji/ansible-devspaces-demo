@@ -34,11 +34,10 @@ spec:
   steps:
     - name: powershell-lint
       image: $(params.image)
-      workingDir: $(workspaces.source.path)
       args:
         - $(params.extra-args[*])
       script: |
-        #!/bin/pwsh
+        #!/usr/bin/env pwsh
         $VerbosePreference = "$(params.verbose)"
 
         Set-PSRepository -ErrorAction Stop -InstallationPolicy Trusted -Name PSGallery -Verbose
