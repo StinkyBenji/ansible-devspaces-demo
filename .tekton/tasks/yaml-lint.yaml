@@ -12,7 +12,7 @@ metadata:
 spec:
   description: This task can be used to perform lint check on YAML files
   workspaces:
-    - name: source
+    - name: shared-workspace
       description: A workspace that contains the fetched git repository.
   params:
     - name: extra-args
