@@ -22,7 +22,7 @@ spec:
     - name: manifests-path
       type: string
       description: "Path to manifest files or manifest directory to be checked. Empty enables auto detection mode."
-      default: ""
+      default: "."
     - name: extra-args
       type: string
       description: "Extra parameters to pass to ansible linter"
