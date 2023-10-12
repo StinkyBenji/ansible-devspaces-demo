@@ -82,8 +82,10 @@ spec:
           - name: source
             workspace: source
         params:
+          - name: image
+            value: registry.gitlab.com/pipeline-components/pylint:latest
           - name: args
-            value: ["-r", "y"]
+            value: ["-r", "y", "--recursive"]
           - name: path
             value: "python/examples"
 
