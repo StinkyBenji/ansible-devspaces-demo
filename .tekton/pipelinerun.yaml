@@ -81,6 +81,11 @@ spec:
         workspaces:
           - name: source
             workspace: source
+        params:
+          - name: args
+            value: ["-r", "y"]
+          - name: path
+            value: "python/examples"
 
   workspaces:
     - name: source
