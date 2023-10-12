@@ -15,7 +15,7 @@ spec:
     - name: shared-workspace
       description: A workspace that contains the fetched git repository.
   params:
-    - name: args
+    - name: extra-args
       type: string
       description: extra args needs to append
       default: "--help"
@@ -43,13 +43,11 @@ spec:
         runAsUser: 65532
       workingDir: $(workspaces.shared-workspace.path)/$(params.context-directory)
       script: |
-        #!/bin/sh
+        #!/usr/bin/env sh
         set -e
 
         if [ "$(params.verbose)" = "true" ] ; then
           set -x
         fi
 
-        echo "$(params.args)"
-
-        yamllint --help
+        yamllint $(params.extra-args)
