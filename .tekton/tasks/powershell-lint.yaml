@@ -38,11 +38,11 @@ spec:
       args:
         - $(params.extra-args[*])
       script: |
-        #!/usr/bin/env pwsh
+        #!/bin/pwsh
         $VerbosePreference = "$(params.verbose)"
 
         Set-PSRepository -ErrorAction Stop -InstallationPolicy Trusted -Name PSGallery -Verbose
 
-        Install-Module  -ErrorAction Stop -Name PSScriptAnalyzer -Verbose
+        Install-Module -ErrorAction Stop -Name PSScriptAnalyzer -Verbose
 
         Invoke-ScriptAnalyzer $@ -Path "$(params.path)"
