@@ -26,7 +26,7 @@ spec:
       description: Verbosity level for command
       type: string
       default: "SilentlyContinue"
-    - name: args
+    - name: extra-args
       type: array
       description: The args for powershell script analyzer
       default: ["-Recurse", "-EnableExit"]
@@ -42,4 +42,4 @@ spec:
 
         Install-Module  -ErrorAction Stop -Name PSScriptAnalyzer -Verbose
 
-        Invoke-ScriptAnalyzer $(params.args) -Path $(params.path)
+        Invoke-ScriptAnalyzer $(params.extra-args) -Path $(params.path)
