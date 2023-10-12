@@ -58,7 +58,7 @@ spec:
         taskRef:
           name: yaml-lint
         workspaces:
-          - name: shared-workspace
+          - name: source
             workspace: source
         params:
           - name: extra-args
@@ -79,7 +79,7 @@ spec:
         taskRef:
           name: pylint
         workspaces:
-          - name: shared-workspace
+          - name: source
             workspace: source
 
   workspaces:
