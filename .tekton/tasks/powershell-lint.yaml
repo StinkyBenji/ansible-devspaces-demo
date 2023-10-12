@@ -30,10 +30,13 @@ spec:
       type: array
       description: The args for powershell script analyzer
       default: ["-Recurse", "-EnableExit"]
+
   steps:
     - name: powershell-lint
       image: $(params.image)
       workingDir: $(workspaces.source.path)
+      args:
+        - $(params.extra-args[*])
       script: |
         #!/usr/bin/env pwsh
         $VerbosePreference = "$(params.verbose)"
@@ -42,4 +45,4 @@ spec:
 
         Install-Module  -ErrorAction Stop -Name PSScriptAnalyzer -Verbose
 
-        Invoke-ScriptAnalyzer $(params.extra-args) -Path $(params.path)
+        Invoke-ScriptAnalyzer $@ -Path "$(params.path)"
