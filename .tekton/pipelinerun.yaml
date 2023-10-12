@@ -57,10 +57,12 @@ spec:
           - detect-secrets
         taskRef:
           name: yaml-lint
-          kind: Task
         workspaces:
           - name: shared-workspace
             workspace: source
+        params:
+          - name: extra-args
+            value: "-c .yamllint ."
 
       - name: ansible-lint
         runAfter:
@@ -69,6 +71,15 @@ spec:
           name: ansible-lint
         workspaces:
           - name: source
+            workspace: source
+
+      - name: pylint
+        runAfter:
+          - ansible-lint
+        taskRef:
+          name: pylint
+        workspaces:
+          - name: shared-workspace
             workspace: source
 
   workspaces:
