@@ -70,7 +70,7 @@ spec:
         taskRef:
           name: ansible-lint
         workspaces:
-          - name: shared-workspace
+          - name: source
             workspace: source
 
       - name: pylint

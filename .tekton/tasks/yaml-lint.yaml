@@ -12,7 +12,7 @@ metadata:
 spec:
   description: This task can be used to perform lint check on YAML files
   workspaces:
-    - name: shared-workspace
+    - name: source
       description: A workspace that contains the fetched git repository.
   params:
     - name: extra-args
@@ -41,7 +41,7 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 65532
-      workingDir: $(workspaces.shared-workspace.path)/$(params.context-directory)
+      workingDir: $(workspaces.source.path)/$(params.context-directory)
       script: |
         #!/usr/bin/env sh
         set -e
