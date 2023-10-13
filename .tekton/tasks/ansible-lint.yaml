@@ -60,4 +60,4 @@ spec:
           set -x
         fi
 
-        ansible-lint "$(params.extra-args)" "$(params.manifests-path)"
+        ansible-lint $(params.extra-args) $(params.manifests-path)

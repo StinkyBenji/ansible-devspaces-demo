@@ -78,18 +78,9 @@ spec:
           - name: extra-args
             value: "-c .yamllint ."
 
-      - name: ansible-lint
-        runAfter:
-          - yaml-lint
-        taskRef:
-          name: ansible-lint
-        workspaces:
-          - name: source
-            workspace: source
-
       - name: pylint
         runAfter:
-          - ansible-lint
+          - yaml-lint
         taskRef:
           name: pylint
         workspaces:
@@ -116,6 +107,30 @@ spec:
             value: "centos-8"
           - name: path
             value: "pwsh-examples/"
+
+      - name: ansible-lint
+        runAfter:
+          - powershell-lint
+        taskRef:
+          name: ansible-lint
+        workspaces:
+          - name: source
+            workspace: source
+        params:
+          - name: extra-args
+            value: "-i "
+
+      - name: ansible-molecule
+        runAfter:
+          - ansible-lint
+        taskRef:
+          name: ansible-lint
+        workspaces:
+          - name: source
+            workspace: source
+        params:
+          - name: context-directory
+            value: "collections/"
 
   workspaces:
     - name: source

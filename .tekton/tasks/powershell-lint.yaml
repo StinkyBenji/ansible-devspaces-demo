@@ -31,21 +31,21 @@ spec:
       type: string
       default: "SilentlyContinue"
     - name: extra-args
-      type: array
+      type: string
       description: The args for powershell script analyzer
-      default: ["-Recurse", "-EnableExit"]
+      default: "-Recurse"
 
   steps:
     - name: powershell-lint
       image: $(params.image):$(params.tag)
-      args:
-        - $(params.extra-args[*])
+      workingDir: $(workspaces.source.path)
       script: |
         #!/usr/bin/env pwsh
         $VerbosePreference = "$(params.verbose)"
+        $ErrorActionPreference = "Stop"
 
         Set-PSRepository -ErrorAction Stop -InstallationPolicy Trusted -Name PSGallery -Verbose
 
         Install-Module -ErrorAction Stop -Name PSScriptAnalyzer -Verbose
 
-        Invoke-ScriptAnalyzer $@ -Path "$(params.path)"
+        Invoke-ScriptAnalyzer $(params.extra-args) -Path "$(params.path)"
