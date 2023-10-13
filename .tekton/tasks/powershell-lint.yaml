@@ -21,7 +21,11 @@ spec:
     - name: image
       description: image to use to execute this task
       type: string
-      default: "mcr.microsoft.com/powershell:latest"
+      default: "mcr.microsoft.com/powershell"
+    - name: tag
+      type: string
+      description: The tag for the Powershell image.
+      default: "latest"
     - name: verbose
       description: Verbosity level for command
       type: string
@@ -33,7 +37,7 @@ spec:
 
   steps:
     - name: powershell-lint
-      image: $(params.image)
+      image: $(params.image):$(params.tag)
       args:
         - $(params.extra-args[*])
       script: |
