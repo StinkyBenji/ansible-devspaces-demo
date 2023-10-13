@@ -61,6 +61,10 @@ spec:
         workspaces:
           - name: source
             workspace: source
+        # Add ignored rules: styling, info, warning
+        params:
+          - name: ignore-rules
+            value: "SC2006,DL4006,DL3041,SC1091,DL3003"
 
       - name: yaml-lint
         runAfter:

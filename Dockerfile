@@ -4,7 +4,7 @@ FROM quay.io/ansible/creator-ee@sha256:c89ecbcf47bfa956a2ed3c4939cd29a53298943c8
 ENV HOME=/home/runner
 
 # install kubernetes module required by molecule
-RUN pip3 install kubernetes==26.1.0
+RUN pip3 install --no-cache-dir kubernetes==26.1.0
 
 # kubectl
 RUN \
@@ -43,7 +43,7 @@ nvm install 18.18.0
 ENV VSCODE_NODEJS_RUNTIME_DIR="$HOME/.nvm/versions/node/v18.18.0/bin/"
 
 # install pre-commit
-RUN pip3 install pre-commit
+RUN pip3 install --no-cache-dir pre-commit==3.4.0
 
 # Set permissions on /etc/passwd and /home to allow arbitrary users to write
 RUN chgrp -R 0 /home && chmod -R g=u /etc/passwd /etc/group /home
