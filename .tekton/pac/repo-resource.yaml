@@ -4,4 +4,11 @@ metadata:
   name: ansible-devspaces-demo-repo
   namespace: ansible-devspaces-demo
 spec:
-  url: "https://github.com/StinkyBenji/ansible-devspaces-demo.git"
+  url: "https://github.com/StinkyBenji/ansible-devspaces-demo"
+  git_provider:
+    secret:
+      name: "github-webhook-config"
+      key: "provider.token"
+    webhook_secret:
+      name: "github-webhook-config"
+      key: "webhook.secret"

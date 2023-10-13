@@ -9,7 +9,6 @@ metadata:
     tekton.dev/categories: Security
     tekton.dev/tags: Security, Secrets
     tekton.dev/displayName: "Gitleaks"
-    tekton.dev/platforms: "linux/amd64"
 spec:
   description: >-
     This task makes it possible to use Gitleaks within your Tekton pipelines.
@@ -23,7 +22,7 @@ spec:
     - name: repo_path
       type: string
       description: path to the repo to be scanned.
-      default: .
+      default: "."
     - name: config_file_url
       type: string
       description: url from where the config file would be fetched.

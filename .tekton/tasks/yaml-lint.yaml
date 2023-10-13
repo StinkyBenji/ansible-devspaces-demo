@@ -9,14 +9,13 @@ metadata:
     tekton.dev/categories: Code Quality
     tekton.dev/tags: linter
     tekton.dev/displayName: "YAML linter"
-    tekton.dev/platforms: "linux/amd64"
 spec:
   description: This task can be used to perform lint check on YAML files
   workspaces:
-    - name: shared-workspace
+    - name: source
       description: A workspace that contains the fetched git repository.
   params:
-    - name: args
+    - name: extra-args
       type: string
       description: extra args needs to append
       default: "--help"
@@ -42,11 +41,13 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 65532
-      workingDir: $(workspaces.shared-workspace.path)/$(params.context-directory)
+      workingDir: $(workspaces.source.path)/$(params.context-directory)
       script: |
         #!/usr/bin/env sh
         set -e
+
         if [ "$(params.verbose)" = "true" ] ; then
           set -x
         fi
-        yamllint $(params.args)
+
+        yamllint $(params.extra-args)

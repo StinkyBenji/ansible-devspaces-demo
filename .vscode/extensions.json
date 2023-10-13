@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "ms-python.python",
+    "ms-vscode.PowerShell",
     "redhat.ansible",
     "redhat.vscode-openshift-connector",
     "ms-python.black-formatter"
